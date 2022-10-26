@@ -1,0 +1,12 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  namespace: metallb-system
+  name: mlb-pool
+spec:
+  protocol: layer2
+  autoAssign: false ##false if IP assignment will be done manually in the Service configuration
+  addresses:
+  - 192.168.1.0/24 ##CIDR format
+  - 10.10.0.2-10.10.0.22 ##IP range
+  - 10.100.1.5-10.100.1.5 ##single IP address
