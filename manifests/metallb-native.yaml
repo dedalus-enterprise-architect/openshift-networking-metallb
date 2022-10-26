@@ -1641,8 +1641,9 @@ spec:
       hostNetwork: true
       nodeSelector:
         kubernetes.io/os: linux
-        node-role.kubernetes.io/worker: ""
-        ##node-role.kubernetes.io/infra: ""
+        matchLabels:
+          node-role.kubernetes.io/worker: ""
+          # node-role.kubernetes.io/infra: ""     
       serviceAccountName: speaker
       terminationGracePeriodSeconds: 2
       tolerations:
@@ -1652,6 +1653,12 @@ spec:
       - effect: NoSchedule
         key: node-role.kubernetes.io/control-plane
         operator: Exists
+      # - effect: NoSchedule
+      #   key: node-role.kubernetes.io/infra
+      #   value: reserved
+      # - effect: NoExecute
+      #   key: node-role.kubernetes.io/infra
+      #   value: reserved      
 ---
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
