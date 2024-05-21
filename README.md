@@ -30,14 +30,14 @@ Deploy MetalLB namespace:
 oc apply -f deploy/metallb-namespace.yaml
 ```
 
-Deploy MetalLB _OperatorGroup_ and its _Subscription:
+Deploy MetalLB _OperatorGroup_ and its _Subscription_:
 
 ```bash
 oc apply -f deploy/metallb-operator.yaml
 oc apply -f deploy/metallb-operator-sub.yaml
 ```
 
-Check that the _InstallPlan_ has been approved
+Check that the _InstallPlan_ has been approved:
 
 ```bash
 oc get installplan -n metallb-system
@@ -60,7 +60,6 @@ Deploy a MetalLB instance:
 ```bash
 oc apply -f deploy/metallb-instance.yaml
 ```
-
 
 Note that:
 
@@ -98,7 +97,7 @@ oc apply -f deploy/metallb-addresspool.yaml
 
 > WARNING: application namespace admin role is required to proceed on this section.
 
-Provision a _Service_ of type _LoadBalancer_ for every application that has to be load-balanced, as shown in the following examples
+Provision a _Service_ of type _LoadBalancer_ for every application that has to be load-balanced, as shown in the following examples:
 
 * 1 virtual IP balancing a single TCP port; virtual IP is assigned manually: ```examples/tcp-single-service.yaml```
 * 1 virtual IP balancing multiple TCP ports; virtual IPs are assigned manually: ```examples/tcp-multiple-service.yaml```
