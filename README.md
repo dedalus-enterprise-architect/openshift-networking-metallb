@@ -9,13 +9,13 @@ This project collects some procedures on how to setup a MetalLB deployment on Op
 * OpenShift cluster admin and application namespace admin privileges
 * Git project local clone
 
-Explore the files used by this project:
+Explore files provided in this project:
 
-* ```manifests/metallb-native.yaml``` : __MetalLB deployment__ definition
-* ```manifests/metallb-addresspool.yaml``` : __IPAddressPool__ example definition
-* ```manifests/metallb-l2advertise.yaml``` : __L2Advertisement__ definition
+* ```manifests/metallb-native.yaml``` : MetalLB deployment definition
+* ```manifests/metallb-addresspool.yaml``` : _IPAddressPool_ example definition
+* ```manifests/metallb-l2advertise.yaml``` : _L2Advertisement_ definition
 * ```examples/tcp-single-service.yaml``` : example provisioning 1 virtual IP balancing a single TCP port
-* ```examples/tcp-multiple-service.yaml``` : example provisioning 1 virtual IP balacing multiple TCP ports
+* ```examples/tcp-multiple-service.yaml``` : example provisioning 1 virtual IP balancing multiple TCP ports
 
 ## MetalLB resources: setup
 
