@@ -12,7 +12,7 @@ This project collects some procedures on how to setup a MetalLB deployment on Op
 Explore the files used by this project:
 
 * ```manifests/metallb-native.yaml``` : __MetalLB deployment__ definition
-* ```manifests/metallb-addresspool.yaml``` : __IPAddressPool__ definition
+* ```manifests/metallb-addresspool.yaml``` : __IPAddressPool__ example definition
 * ```manifests/metallb-l2advertise.yaml``` : __L2Advertisement__ definition
 * ```examples/tcp-single-service.yaml``` : example provisioning 1 virtual IP balancing a single TCP port
 * ```examples/tcp-multiple-service.yaml``` : example provisioning 1 virtual IP balacing multiple TCP ports
@@ -31,7 +31,7 @@ Note that:
 
 * a namespace ```metallb-system``` is created
 * a _nodeSelector_ ```node-role.kubernetes.io/worker``` has been applied to the _DaemonSet_ ```speaker``` to deploy speaker pods only on worker nodes
-* keys ```spec.template.spec.securityContext.runAsUser``` and ```spec.template.spec.securityContext.fsGroup``` have been removed for OCP compliance https://metallb.universe.tf/installation/clouds/#metallb-on-openshift-ocp
+* keys ```spec.template.spec.securityContext.runAsUser``` and ```spec.template.spec.securityContext.fsGroup``` have been removed for OCP compliance <https://metallb.universe.tf/installation/clouds/#metallb-on-openshift-ocp>
 
 Assign the following policy
 
@@ -39,7 +39,7 @@ Assign the following policy
 oc adm policy add-scc-to-user privileged -n metallb-system -z speaker
 ```
 
-Provision one or more _IPAddressPool_ resources from which MetalLB will assign virtual IPs for the load balanced services
+Provision one or more _IPAddressPool_ resources from which MetalLB will assign virtual IPs for the load balanced services by customizing the provided yaml according to your needs:
 
 ```bash
 oc apply -f manifests/metallb-addresspool.yaml
@@ -61,7 +61,8 @@ Provision a _Service_ of type _LoadBalancer_ for every application that has to b
 * 1 virtual IP balancing multiple TCP ports; virtual IPs are assigned manually: ```examples/tcp-multiple-service.yaml```
 
 Tips:
+
 * remove key ```loadBalancerIP``` to get an auto-assigned IP from ```metallb.universe.tf/address-pool``` if available
-* key ```externalTrafficPolicy```: can be set to ```Cluster``` or ```Local```, refer to K8S docs about the difference https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
-* the Service API definition (https://v1-23.docs.kubernetes.io/docs/concepts/services-networking/service/) doesn't support ranges as port values 
+* key ```externalTrafficPolicy```: can be set to ```Cluster``` or ```Local```, refer to K8S docs about the difference <https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip>
+* the Service API definition (<https://v1-23.docs.kubernetes.io/docs/concepts/services-networking/service/>) doesn't support ranges as port values 
 * the annotation ```metallb.universe.tf/allow-shared-ip``` must be added when a virtual IP is shared between 2 or more services, and its value must be the same for all the sharing services
