@@ -4,7 +4,7 @@ This project collects some procedures on how to setup a MetalLB deployment on Op
 
 * RedHat Operators Catalog available
 * MetalLB Operator
-1 subnet available to assign virtual IPs to the load balancer service (must not overlap with the hosts network)
+* 1 subnet available to assign virtual IPs to the load balancer service (must not overlap with the hosts network)
 * OpenShift client utility: ```oc```
 * OpenShift cluster admin and application namespace admin privileges
 * Git project local clone
