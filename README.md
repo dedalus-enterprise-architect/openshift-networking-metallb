@@ -90,7 +90,7 @@ oc apply -f deploy/metallb-addresspool.yaml
 Provision one or more _L2Advertisement_ resources to announce networks described in the address pools:
 
 ```bash
-oc apply -f deploy/metallb-addresspool.yaml
+oc apply -f deploy/metallb-l2advertise.yaml
 ```
 
 ## Load balanced services: setup
